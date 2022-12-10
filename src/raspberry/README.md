@@ -32,11 +32,11 @@ $ cd /home/iw/tensorflow1/models/research/object_detection
 ```
 #### 3. Comando para ejecutar en caso de ingreso de pasajeros
 ```bash
-$ python -m raspberry.ini ingreso     
+$ python3 -m raspberry.ini ingreso     
 ```
 #### 4. Comando para ejecutar en caso de salida de pasajeros
 ```bash
-$ python -m raspberry.ini salida    
+$ python3 -m raspberry.ini salida    
 ```
 #### 5. Comando para ejecutar vista
 ```bash
