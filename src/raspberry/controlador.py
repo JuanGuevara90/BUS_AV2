@@ -1,7 +1,7 @@
 from .utiles.getDateCurrent import getDate_Current
 import RPi.GPIO as GPIO
 from .database.operaciones import Asientosdisponibles, existeRegistrosFechaActual,ingresarRegistroPasajeros,disponibilidadBus,actualizarRegistroSuma,actualizarRegistroResta,validateLeft,getDatosActuales,getRoutes
-from .database.conexion import create_connection,main,isSqlite3Db
+from .database.conexion import create_connection
 from .serial.sendData import sendDatabySerial,sendDatabySerial2
 from .serial.sensorica import sensorica #sensorica2
 import os
@@ -12,10 +12,7 @@ from .vista.MostrarDatos import agregar
 
 def controladorIngreso():
     if(controladorSensor):
-        if( isSqlite3Db() ): 
-            conn = create_connection()
-        else:
-            conn = main()
+        conn = create_connection()
         dateCurrent = getDate_Current()
         if( existeRegistrosFechaActual( conn , dateCurrent)  ):
             if( disponibilidadBus( conn , dateCurrent ) ):
