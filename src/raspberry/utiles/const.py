@@ -1,0 +1,2 @@
+OPERACION_INGRESO="ingreso"
+OPERACION_SALIDA="salida"

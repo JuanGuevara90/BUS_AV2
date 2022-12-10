@@ -1,0 +1,4 @@
+opencv-python ==  4.6.0.66
+db-sqlite3 == 0.0.1
+pyserial == 3.5
+python-dotenv == 0.20.0
