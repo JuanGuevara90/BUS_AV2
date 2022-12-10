@@ -1,5 +1,5 @@
 from array import array
-import datetime 
+
 
 def getDatosActuales(conn,fechaActual):
     try:
@@ -37,6 +37,7 @@ def ingresarRegistroPasajeros(conn,fechaActual):
         sql_insert = "INSERT INTO Registro_Pasajeros (Fecha,Total_PasajerosActual,Total_Pasajeros,Aforo) VALUES ('"+fechaActual+"','1','1','20')"
 
         cur.execute(sql_insert)
+        conn.commit()
     except:
         print("Error ingresarRegistroPasajeros")
         
@@ -45,6 +46,7 @@ def ingresarRutaBus(conn):
         cur = conn.cursor()
         sql_insert = "INSERT INTO Bus (origen,destino) VALUES ('Ibarra','Atuntaqui')"
         cur.execute(sql_insert)
+        conn.commit()
     except:
         print("Error ingresarRutaBus")
     
@@ -53,6 +55,7 @@ def actualizarRegistroSuma(conn,fechaActual):
         cur = conn.cursor()
         sql_update ="update  Registro_Pasajeros set Total_PasajerosActual=Total_PasajerosActual+1 ,Total_Pasajeros=Total_Pasajeros+1 where Fecha='"+fechaActual+"'"
         cur.execute(sql_update)
+        conn.commit()
     except:
         print("Error actualizarRegistroSuma")
 
@@ -61,6 +64,7 @@ def actualizarRegistroResta(conn,fechaActual):
         cur = conn.cursor()
         sql_update ="update  Registro_Pasajeros set Total_PasajerosActual=Total_PasajerosActual-1 where Fecha='"+fechaActual+"'"
         cur.execute(sql_update)
+        conn.commit()
     except:
         print("Error actualizarRegistroResta")
     
@@ -98,6 +102,7 @@ def existeRegistrosFechaActual(conn,fechaActual):
         cur.execute(sql_query)
         for i in cur.fetchall():
             if (i[0]>0):
+                conn.commit()
                 return True
             return False
     except:
