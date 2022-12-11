@@ -59,11 +59,10 @@ def controladorSalida():
 
 def controladorDatos():
     datospantalla = []
-    if (isSqlite3Db()):
-        conn = create_connection()
-        dateCurrent = getDate_Current()
-        datospantalla = (getDatosActuales(conn, dateCurrent))
-        print(datospantalla)
+    conn = create_connection()
+    dateCurrent = getDate_Current()
+    datospantalla = (getDatosActuales(conn, dateCurrent))
+    print(datospantalla)
     return datospantalla
 
 
