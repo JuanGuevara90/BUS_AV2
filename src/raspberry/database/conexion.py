@@ -10,6 +10,7 @@ load_dotenv(dotenv_path)
 
 PATH_DATABASE = os.environ.get("DATABASE")
 
+
 def create_connection():
     db_file = PATH_DATABASE
     conn = None

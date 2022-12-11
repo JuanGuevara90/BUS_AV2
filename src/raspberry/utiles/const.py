@@ -1,2 +1,2 @@
-OPERACION_INGRESO="ingreso"
-OPERACION_SALIDA="salida"
+OPERACION_INGRESO = "ingreso"
+OPERACION_SALIDA = "salida"
