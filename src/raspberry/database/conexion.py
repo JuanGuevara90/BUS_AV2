@@ -1,14 +1,13 @@
 import psycopg2
-
-from psycopg2 import Error
 import os
+from psycopg2 import Error
 from os.path import join, dirname
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
-
 PATH_DATABASE = os.environ.get("DATABASE")
+
 
 def create_connection():
     db_file = PATH_DATABASE
