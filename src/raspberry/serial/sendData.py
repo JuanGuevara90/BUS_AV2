@@ -19,21 +19,6 @@ def sendDatabySerial(msg):
     ser.close()
 
 
-def sendDatabySerial2(msg):
-    dotenv_path = join(dirname(__file__), '.env')
-    load_dotenv(dotenv_path)
-    FRECUENCIA2 = os.environ.get("FRECUENCIA2")
-    DISPOSITIVO2 = os.environ.get("DISPOSITIVO2")
-    ser = serial.Serial(''+DISPOSITIVO2, FRECUENCIA2)
-    ser.write(msg.encode("utf-8"))
-    ser.close()
-
-
-def arduino(mnsj):
-    arduino = serial.Serial("/dev/ttyACM0", 9600)
-    time.sleep(1)
-    arduino.write(mnsj.encode("utf-8"))
-    arduino.close()
 
 
 def connection():

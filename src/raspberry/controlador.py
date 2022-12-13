@@ -2,7 +2,7 @@ from .utiles.getDateCurrent import getDate_Current
 import RPi.GPIO as GPIO
 from .database.operaciones import Asientosdisponibles, existeRegistrosFechaActual, ingresarRegistroPasajeros, disponibilidadBus, actualizarRegistroSuma, actualizarRegistroResta, validateLeft, getDatosActuales, getRoutes
 from .database.conexion import create_connection
-from .serial.sendData import sendDatabySerial, sendDatabySerial2
+from .serial.sendData import sendDatabySerial
 from .serial.sensorica import sensorica  # sensorica2
 import os
 from dotenv import load_dotenv
@@ -14,6 +14,7 @@ def controladorIngreso():
     if (controladorSensor):
         conn = create_connection()
         dateCurrent = getDate_Current()
+        print(dateCurrent)
         if (existeRegistrosFechaActual(conn, dateCurrent)):
             if (disponibilidadBus(conn, dateCurrent)):
                 actualizarRegistroSuma(conn, dateCurrent)
@@ -29,11 +30,7 @@ def controladorIngreso():
             A = "Ingreso al inicio del dia"
             print(A)
 
-        Ing = getDatosActuales(conn, dateCurrent)
-        agregar(Ing)
-        enarduin = str(Ing[1])
-        sendDatabySerial(enarduin)
-        print(enarduin)
+
 
 
 def controladorSalida():
@@ -44,37 +41,13 @@ def controladorSalida():
             if (validateLeft(conn, dateCurrent)):
                 actualizarRegistroResta(conn, dateCurrent)
                 """ Actualizar y enviar al arduino"""
-                B = "Ingreso un pasajeros"
+                B = "Salida un pasajeros"
 
                 print(B)
             else:
                 print("Enviar al arduino ")
 
-        Sal = getDatosActuales(conn, dateCurrent)
-        agregar(Sal)
-        salard = str(Sal[1])
-        sendDatabySerial(salard)
-        print(salard)
-
-
-def controladorDatos():
-    datospantalla = []
-    conn = create_connection()
-    dateCurrent = getDate_Current()
-    datospantalla = (getDatosActuales(conn, dateCurrent))
-    print(datospantalla)
-    return datospantalla
-
-
-def SendData(conn, dateCurrent):
-    des1 = (getRoutes(conn))
-    print(des1)
-    Sal = (getDatosActuales(conn, dateCurrent))
-    salard = str(Sal[1])
-    sendDatabySerial(salard)
-    print(salard)
-    return Sal
-
+       
 
 def controladorSensor():
 
